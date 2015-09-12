@@ -13,7 +13,10 @@ class Hackbot(object):
         self.client = None
 
     def connect(self):
-        """Set up SlackClient and connect to Real Time Messaging API."""
+        """Set up SlackClient and connect to Real Time Messaging API.
+
+        The RTM sets up a continuous websocket connection, from which you can read and respond to events in real time without without making a full HTTPS request.
+        """
         self.client = SlackClient(self.token)
         self.client.rtm_connect()
 
@@ -38,6 +41,7 @@ class Hackbot(object):
         When balloonicorn is mentioned, returns a random choice from a list of reponses.
         """
 
+        if
         reply = random.choice(['Hi there!', 'Yes?', ';)'])
         self.client.rtm_send_message(channel, reply)
 
