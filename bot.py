@@ -7,5 +7,5 @@ sc = SlackClient(token)
 
 print sc.api_call("auth.test")
 
-SlackClient.rtm_connect()
+sc.rtm_connect()
 print 'Connected to websocket.\n'
