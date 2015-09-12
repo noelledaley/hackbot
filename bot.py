@@ -15,8 +15,17 @@ class Hackbot(object):
     def read(self):
         while True:
             for response in self.client.rtm_read():
-                print reponse
-            time.sleep(1)
+                print response
+                
+                if response.get('type') == 'message':
+                    message = response.get('text')
+                    channel = response.get('channel')
+                    self.reply(message, channel)
+                time.sleep(1)
+
+    def reply(self, message, channel):
+        if message == 'hello':
+            self.client.rtm_send_message(channel, 'Hi there!')
 
 # sc.rtm_connect()
 # while True:
