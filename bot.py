@@ -1,11 +1,14 @@
 from slackclient import SlackClient
 import os
+import time
 
 bot = os.environ['SLACK_TOKEN']
 token = os.environ['SLACK_AUTH']
-sc = SlackClient(token)
+sc = SlackClient(bot)
 
 print sc.api_call("auth.test")
 
 sc.rtm_connect()
-print 'Connected to websocket.\n'
+while True:
+    print sc.rtm_read()
+    time.sleep(1)
